@@ -11,7 +11,7 @@ export class AppController {
   }
 
   @Get('quotes')
-  getQuotes() {
-    return "quotes";
+  getQuotes(): {message: string} {
+    return {message: 'quotes'};
   }
 }
