@@ -7,7 +7,7 @@ export class QuotesService {
     getQuotes(): string {
        return "this will return quotes"; 
     }
-    createQuote(quote: any) {
-        return `${quote.author} has written ${quote.title}`
+    createQuote(quote: Quote) {
+        return quote;
     }
 }
