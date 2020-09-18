@@ -16,8 +16,8 @@ getQuotes(): string {
 }
 @Post()
 
-createQuotes(@Body() quote: CreateQuoteDto): any {
-    return `${quote.title}`;
+createQuotes(@Body() createQuoteDto: CreateQuoteDto): any {
+    return this.quotesService.createQuote(createQuoteDto);
 }
 
 }
