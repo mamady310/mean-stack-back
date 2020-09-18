@@ -10,8 +10,4 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('quotes')
-  getQuotes(): {message: string} {
-    return {message: 'quotes'};
-  }
 }
