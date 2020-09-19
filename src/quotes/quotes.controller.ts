@@ -1,6 +1,9 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CreateQuoteDto } from './dto/create-quote.dto';
 import { QuotesService } from './quotes.service';
+import { ApiTags }from '@nestjs/swagger';
+
+@ApiTags('quotes')
 
 @Controller('quotes') //this path to quotes
 export class QuotesController {

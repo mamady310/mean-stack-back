@@ -10,6 +10,29 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
-    "incremental": true
+    "incremental": true,
   }
 }
+// {
+//   "compilerOptions": {
+//     "module": "commonjs",
+//     "declaration": false,
+//     "noImplicitAny": false,
+//     "removeComments": true,
+//     "noLib": false,
+//     "allowSyntheticDefaultImports": true,
+//     "emitDecoratorMetadata": true,
+//     "experimentalDecorators": true,
+//     "target": "es6",
+//     "sourceMap": true,
+//     "allowJs": false,
+//     "outDir": "./dist"
+//   },
+//   "include": [
+//     "src/**/*"
+//   ],
+//   "exclude": [
+//     "**/node_modules/*",
+//     "**/*.spec.ts"
+//   ]
+// }
