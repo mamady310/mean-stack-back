@@ -4,9 +4,26 @@ import { Quote } from './interfaces/quote.interface';
 
 @Injectable()
 export class QuotesService {
+    quotes: Quote[] = [
+        {
+            id: '1', 
+            title: "monsters",
+            author: "some monster",
+        },
+        {
+            id: '2',
+            title: "chicken little",
+            author: "some chicken",
+        },
+        {
+            id: '3',
+            title: "pizza pizza",
+            author: "get your pizza",
+        }
 
-    getQuotes(): string {
-       return "this will return quotes"; 
+    ]
+    getQuotes(id: number): string {
+       return `Quote ${id}`; 
     }
     createQuote(quote: any) {
         return quote;
