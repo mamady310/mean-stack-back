@@ -9,9 +9,7 @@ import { Quote } from './interfaces/quote.interface';
 @Controller('quotes') //this path to quotes
 export class QuotesController {
 
-constructor(private quotesService: QuotesService) {
-
-}
+constructor(private quotesService: QuotesService) {}
 
     @Get()
 
@@ -32,11 +30,16 @@ constructor(private quotesService: QuotesService) {
    createQuote(@Body() createQuoteDto: CreateQuoteDto): any {
        return this.quotesService.createQuote(createQuoteDto);
    }
+   @ApiParam({name: 'id'})
+   @Put(':id')
 
-    @Put('id:')
-    updateQuote(@Param('id') id, @Body() updateQuoteDto: CreateQuoteDto): Quote {
-    return this.quotesService.updateQuote(id, updateQuoteDto);
-}
+   updateQuote(@Body('id') id: CreateQuoteDto): Quote {
+       return this.quotesService.createQuote(id)
+   }
+//     @Put(':id')
+//     updateQuote(@Param('id') id, @Body() updateQuoteDto: CreateQuoteDto): Quote {
+//     return this.quotesService.updateQuote(id, updateQuoteDto);
+// }
 
 }
 
