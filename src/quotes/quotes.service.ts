@@ -31,10 +31,13 @@ export class QuotesService {
     createQuote(quote: any) {
         return quote;
     }
-    updateQuote(id: string, updateQuoteDto: any){
+    updateQuote(id: string, updateQuoteDto): Quote{
         const data = this.quotes.find(quote => quote.id === id);
         data.title = updateQuoteDto.title ?  updateQuoteDto.title : data.title;
         data.author = updateQuoteDto.author ? updateQuoteDto.author : data.author;
         return data;
+    }
+    deleteQuote(id: string): Quote {
+        return this.quotes.find(quote => quote.id === id);
     }
 }
