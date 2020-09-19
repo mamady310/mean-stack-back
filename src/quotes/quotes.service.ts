@@ -22,8 +22,11 @@ export class QuotesService {
         }
 
     ]
-    getQuotes(id: number): string {
-       return `Quote ${id}`; 
+    getQuotes(): Quote[] {
+        return this.quotes;
+    }
+    getQuote(id: string): Quote {
+       return this.quotes.find(quote => quote.id === id);
     }
     createQuote(quote: any) {
         return quote;

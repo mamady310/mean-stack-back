@@ -2,6 +2,7 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CreateQuoteDto } from './dto/create-quote.dto';
 import { QuotesService } from './quotes.service';
 import { ApiTags, ApiParam }from '@nestjs/swagger';
+import { Quote } from './interfaces/quote.interface';
 
 @ApiTags('quotes')
 
@@ -14,7 +15,7 @@ constructor(private quotesService: QuotesService) {
 
     @Get()
 
-    getQuotes(): string {
+    getQuotes(): Quote[] {
         return this.quotesService.getQuotes();
     }
     //caputres id in swagger ui
@@ -22,8 +23,8 @@ constructor(private quotesService: QuotesService) {
 
     @Get(':id') //param will contain all dynamic ids 
     
-    getQuote(@Param('id') id) {
-      return this.quotesService.getQuotes(id);  
+    getQuote(@Param('id') id): Quote {
+      return this.quotesService.getQuote(id);  
     }
 
     @Post()
