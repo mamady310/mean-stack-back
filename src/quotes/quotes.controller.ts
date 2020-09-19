@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put} from '@nestjs/common';
 import { CreateQuoteDto } from './dto/create-quote.dto';
 import { QuotesService } from './quotes.service';
 import { ApiTags, ApiParam }from '@nestjs/swagger';
@@ -32,6 +32,11 @@ constructor(private quotesService: QuotesService) {
    createQuote(@Body() createQuoteDto: CreateQuoteDto): any {
        return this.quotesService.createQuote(createQuoteDto);
    }
+
+    @Put('id:')
+    updateQuote(@Param('id') id, @Body() updateQuoteDto: CreateQuoteDto): Quote {
+    return this.quotesService.updateQuote(id, updateQuoteDto);
+}
 
 }
 
