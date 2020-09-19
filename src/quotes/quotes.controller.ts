@@ -33,13 +33,13 @@ constructor(private quotesService: QuotesService) {}
    @ApiParam({name: 'id'})
    @Put(':id')
 
-   updateQuote(@Body('id') id: CreateQuoteDto): Quote {
-       return this.quotesService.createQuote(id)
-   }
-//     @Put(':id')
-//     updateQuote(@Param('id') id, @Body() updateQuoteDto: CreateQuoteDto): Quote {
-//     return this.quotesService.updateQuote(id, updateQuoteDto);
-// }
+//    updateQuote(@Body('id') id: CreateQuoteDto): Quote {
+//        return this.quotesService.createQuote(id)
+//    }
+    @Put(':id')
+    updateQuote(@Param('id') id, @Body() updateQuoteDto: CreateQuoteDto): Quote {
+    return this.quotesService.updateQuote(id, updateQuoteDto);
+}
 
 }
 
