@@ -2,47 +2,32 @@ import { Injectable } from '@nestjs/common';
 import { Quote } from './interfaces/quote.interface';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
+import { QuoteSchema } from './schemas/quote.schema';
+
+
 
 
  @Injectable()
 export class QuotesService {
  constructor(
-     @InjectModel('Quote') private readonly quoteModel: Model<Quote>,
+     @InjectModel('Quote') private readonly quoteModel: Model<Quote[QuoteSchema]>,
      ) {}
 
-   quotes: Quote[] = [
-        {
-            id: '1', 
-            title: "monsters",
-            author: "some monster",
-        },
-        {
-            id: '2',
-            title: "chicken little",
-            author: "some chicken",
-        },
-        {
-            id: '3',
-            title: "pizza pizza",
-            author: "get your pizza",
-        }
-    ]
-    getQuotes(): Quote[] {
-        return this.quoteModel.find().exec();
+   
+    async getQuotes(): Promise<Quote[]> {
+        return await this.quoteModel.find().exec();
     }
-    getQuote(id: string): Quote {
-       return this.quotes.find(quote => quote.id === id);
+    async getQuote(id: string): Promise<Quote> {
+       return await this.quoteModel.findById(id).exec();
     }
-    createQuote(quote: any) {
-        return quote;
+    async createQuote(quote: Quote): Promise<Quote> {
+        const newQuote = await new this.quoteModel(quote);
+        return newQuote.save();
     }
-    updateQuote(id: string, updateQuoteDto): Quote{
-        const data = this.quotes.find(quote => quote.id === id);
-        data.title = updateQuoteDto.title ?  updateQuoteDto.title : data.title;
-        data.author = updateQuoteDto.author ? updateQuoteDto.author : data.author;
-        return data;
+    async updateQuote(id: string, updateQuoteDto): Promise<Quote>{
+        return await this.quoteModel.findByIdAndUpdate(id, updateQuoteDto, {new: true})
     }
-    deleteQuote(id: string): Quote {
-        return this.quotes.find(quote => quote.id === id);
+    async deleteQuote(id: string): Promise<any> {
+        return await this.quoteModel.findByIdAndRemove(id);
     }
 }

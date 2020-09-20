@@ -13,7 +13,7 @@ constructor(private quotesService: QuotesService) {}
 
     @Get()
 
-    getQuotes(): Quote[] {
+    getQuotes(): Promise<Quote[]> {
         return this.quotesService.getQuotes();
     }
     //caputres id in swagger ui
@@ -21,24 +21,24 @@ constructor(private quotesService: QuotesService) {}
 
     @Get(':id') //param will contain all dynamic ids 
     
-    getQuote(@Param('id') id): Quote {
+    getQuote(@Param('id') id): Promise<Quote> {
       return this.quotesService.getQuote(id);  
     }
 
     @Post()
 
-   createQuote(@Body() createQuoteDto: CreateQuoteDto): any {
+   createQuote(@Body() createQuoteDto: CreateQuoteDto): Promise<Quote> {
        return this.quotesService.createQuote(createQuoteDto);
    }
    @ApiParam({name: 'id'})
    @Put(':id')
    @Put(':id')
-   updateQuote(@Param('id') id, @Body() updateQuoteDto: CreateQuoteDto): Quote {
+   updateQuote(@Param('id') id, @Body() updateQuoteDto: CreateQuoteDto): Promise<Quote> {
     return this.quotesService.updateQuote(id, updateQuoteDto);
 }   
     @ApiParam({name: 'id'})
     @Delete(':id')
-    deleteQuote(@Param('id') id): Quote {
+    deleteQuote(@Param('id') id): Promise<any> {
     return this.quotesService.deleteQuote(id);
     }
 
