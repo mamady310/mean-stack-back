@@ -15,7 +15,7 @@ export class newQuote extends Document {
     title: String;
 
     @Prop()
-    auhor: String;
+    author: String;
 }
 
 export const QuoteSchema = SchemaFactory.createForClass(newQuote);

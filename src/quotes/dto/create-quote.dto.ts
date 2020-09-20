@@ -8,3 +8,9 @@ export class CreateQuoteDto {
     @ApiProperty()
     readonly author: string;  
 }
+
+// export class CreateQuoteDto {
+
+//     readonly title: string;
+//     readonly author: string;  
+// }
